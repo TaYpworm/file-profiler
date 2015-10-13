@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 import json
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 from optparse import OptionParser
@@ -30,7 +32,7 @@ def get_file_sizes(dir):
 
 def bin_files_by_transact_size(file_sizes):
 	mb_scalar = 1024.0 ** 2
-	bins = [2**x / mb_scalar for x in range(12, 50)]
+	bins = [2**x / mb_scalar for x in range(1, 48)]
 	return np.histogram(map(lambda x: x / mb_scalar, file_sizes), bins)
 
 if __name__ == '__main__':
